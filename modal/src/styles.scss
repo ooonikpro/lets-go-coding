@@ -1,0 +1,148 @@
+* {
+  padding: 0;
+  margin: 0;
+
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+html {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+
+  &.no-scroll {
+    overflow: hidden;
+    padding-right: 17px;
+  }
+}
+
+button {
+  background: none;
+  border: 1px solid transparent;
+  outline: none;
+  appearance: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &[data-modal] {
+    position: fixed;
+  }
+}
+
+
+
+$transition-duration: 300ms;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  transition: visibility $transition-duration ease;
+
+  &__overlay {
+    position: fixed;
+    top: -70px;
+    right: 0;
+    bottom: -70px;
+    left: 0;
+    background-color: rgba(#000, .5);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity $transition-duration ease;
+  }
+
+  &__content {
+    position: relative;
+    width: 600px;
+    z-index: 1;
+    background-color: #f1f1f1;
+    padding: 70px;
+    border-radius: 30px;
+    text-align: center;
+    transform-origin: center;
+    transform: scale(0.8);
+    box-shadow: 0 0 10px rgba(black, 0.2);
+    transition: transform $transition-duration ease;
+
+    &:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid white;
+      border-radius: inherit;
+      transition: transform $transition-duration ease;
+      z-index: -1;
+    }
+  }
+
+  &__content-in {
+    transform: rotate(2deg);
+  }
+
+  &__close {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    font-size: 2.5rem;
+    top: 15px;
+    right: 15px;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    color: rgba(black, .8);
+  }
+
+  &.modal--show {
+    visibility: visible;
+
+    .modal {
+      &__overlay {
+        opacity: 1;
+      }
+
+      &__content {
+        transform: scale(1) rotate(-2deg);
+
+        &::before {
+          transform: rotate(2deg);
+        }
+      }
+    }
+  }
+}
+
+.btn {
+  border-radius: 20px;
+  padding: 15px 30px;
+  font-size: 1.4rem;
+
+  &--black {
+    background-color: black;
+    color: white;
+    margin-right: 15px;
+  }
+
+  &--transparent {
+    background: none;
+    color: rgba(black, .8);
+
+    &:hover {
+      border-color: black;
+    }
+  }
+}
