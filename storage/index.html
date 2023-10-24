@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storages</title>
+  <style>
+    input { outline: transparent; }
+    body { background-color: #424242; color: #f1f1f1; }
+    pre {background-color: rgba(0,0,0, .1); min-height: 100px; padding: 5px 10px 10px; }
+    pre::before {content: "Логи"; opacity: 0.1; display: block; width: 100%; padding-bottom: 10px;}
+  </style>
+</head>
+<body>
+  <input type="text" id="input" placeholder="Напиши в меня"/>
+
+  <button id="save-btn">Сохранить</button>
+  <button id="restore-btn">Восстановить</button>
+
+  <pre id="display"></pre>
+  <p id="quota"></p>
+
+  <script type="module" src="./dom.js"></script>
+  <script type="module" src="./storageEvent.js"></script>
+</body>
+</html>
